@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 Hari Menguasai AI Automation — Dari Nol</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --card: #1a1a26;
+    --border: #2a2a3d;
+    --accent: #6c63ff;
+    --accent2: #ff6584;
+    --accent3: #43e97b;
+    --gold: #ffd166;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, #1a1040 0%, var(--bg) 70%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(108,99,255,0.15);
+    border: 1px solid rgba(108,99,255,0.4);
+    color: var(--accent);
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 7vw, 76px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 span.hl { color: var(--accent); }
+  .hero h1 span.hl2 { color: var(--gold); }
+
+  .hero p.sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* INTRO SECTION */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    margin-bottom: 32px;
+    font-size: 15px;
+  }
+
+  /* WHAT IS AI AUTOMATION */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .info-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .info-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .info-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .info-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* PHASE HEADER */
+  .phase-block {
+    margin-bottom: 56px;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    border-radius: 16px;
+    border-left: 4px solid;
+  }
+
+  .phase-1 { background: rgba(108,99,255,0.08); border-color: var(--accent); }
+  .phase-2 { background: rgba(255,209,102,0.08); border-color: var(--gold); }
+  .phase-3 { background: rgba(67,233,123,0.08); border-color: var(--accent3); }
+  .phase-4 { background: rgba(255,101,132,0.08); border-color: var(--accent2); }
+
+  .phase-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .phase-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+  }
+
+  .phase-range {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* DAY CARDS */
+  .days-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .day-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 20px;
+    align-items: start;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .day-card:hover {
+    border-color: rgba(108,99,255,0.5);
+    transform: translateX(4px);
+  }
+
+  .day-num-box {
+    text-align: center;
+  }
+
+  .day-label {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .day-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .day-content h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .day-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .day-content .tools {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tool-tag {
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.25);
+    color: #9c94ff;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .day-type {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  .type-belajar { background: rgba(108,99,255,0.15); color: #9c94ff; }
+  .type-praktek { background: rgba(67,233,123,0.15); color: #43e97b; }
+  .type-bangun { background: rgba(255,209,102,0.15); color: var(--gold); }
+  .type-launch { background: rgba(255,101,132,0.15); color: var(--accent2); }
+  .type-review { background: rgba(255,255,255,0.1); color: var(--muted); }
+
+  /* INCOME SECTION */
+  .income-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .income-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .income-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .income-card .emoji { font-size: 32px; margin-bottom: 12px; }
+
+  .income-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .income-card .range {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent3);
+    font-family: 'Syne', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  .income-card p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* TOOLS FREE */
+  .tools-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .tool-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .tool-item .t-icon { font-size: 22px; }
+
+  .tool-item .t-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .tool-item .t-info p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .free-badge {
+    margin-left: auto;
+    background: rgba(67,233,123,0.15);
+    color: var(--accent3);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  /* TIPS */
+  .tips-box {
+    background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(255,101,132,0.05));
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 40px;
+  }
+
+  .tips-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .tips-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tips-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .tips-list li .check {
+    color: var(--accent3);
+    font-size: 16px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 20px 0;
+  }
+
+  /* ANIMATE */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero .badge { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero p { animation-delay: 0.3s; }
+  .hero-stats { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🚀 Panduan Lengkap</div>
+  <h1>
+    <span class="hl">AI Automation</span><br>
+    dari <span class="hl2">Nol</span> sampai<br>Penghasilan Pertama
+  </h1>
+  <p class="sub">
+    Umur 25 tahun, modal Rp 0, pengetahuan nol — bukan masalah.<br>
+    Ikuti agenda 30 hari ini dan kamu bisa mulai dapat uang dari AI.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">30</div>
+      <div class="stat-label">Hari</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Rp 0</div>
+      <div class="stat-label">Modal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Fase</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Potensi</div>
+    </div>
+  </div>
+</div>
+
+<!-- APA ITU AI AUTOMATION -->
+<div class="section">
+  <div class="section-title">❓ Apa itu AI Automation?</div>
+  <div class="section-sub">Penjelasan simpel untuk pemula total</div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <span class="icon">🤖</span>
+      <h3>Definisi Simpel</h3>
+      <p>AI Automation = menggunakan kecerdasan buatan untuk mengerjakan tugas-tugas yang biasanya dilakukan manusia — secara otomatis, tanpa kamu harus mengerjakan satu per satu.</p>
+    </div>
+    <div class="info-card">
+      <span class="icon">💡</span>
+      <h3>Contoh Nyata</h3>
+      <p>Bayangkan kamu punya "karyawan robot" yang bisa bikin konten Instagram, jawab email pelanggan, buat desain, atau riset produk — 24 jam nonstop tanpa gaji.</p>
+    </div>
+    <div class="info-card">
+      <span class="icon">💰</span>
+      <h3>Cara Dapat Uang</h3>
+      <p>Kamu menjual "jasa" yang dikerjakan AI kepada bisnis atau individu. Mereka bayar kamu, kamu bayar AI (gratis atau murah). Selisihnya = keuntungan kamu.</p>
+    </div>
+    <div class="info-card">
+      <span class="icon">📱</span>
+      <h3>Kenapa Sekarang?</h3>
+      <p>2024–2025 adalah era emas AI. Banyak UMKM Indonesia butuh otomasi tapi tidak tahu caranya. Kamu bisa jadi jembatan itu dan dibayar dengan baik.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS GRATIS -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-title">🛠️ Tools yang Kamu Butuhkan</div>
+  <div class="section-sub">Semuanya GRATIS — cukup daftar dengan email</div>
+
+  <div class="tools-list">
+    <div class="tool-item">
+      <span class="t-icon">🧠</span>
+      <div class="t-info">
+        <h4>ChatGPT / Claude</h4>
+        <p>AI utama untuk kerja</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">⚡</span>
+      <div class="t-info">
+        <h4>Make.com (Integromat)</h4>
+        <p>Sambungkan app otomatis</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">🔗</span>
+      <div class="t-info">
+        <h4>n8n.io (self-host)</h4>
+        <p>Workflow automation</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">📊</span>
+      <div class="t-info">
+        <h4>Google Sheets</h4>
+        <p>Database + data gratis</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">📱</span>
+      <div class="t-info">
+        <h4>WhatsApp Business API</h4>
+        <p>Chatbot WA pelanggan</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">🎨</span>
+      <div class="t-info">
+        <h4>Canva + AI (Magic)</h4>
+        <p>Desain konten otomatis</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">📝</span>
+      <div class="t-info">
+        <h4>Notion AI</h4>
+        <p>Buat dokumen & sistem</p>
+      </div>
+      <span class="free-badge">Free Trial</span>
+    </div>
+    <div class="tool-item">
+      <span class="t-icon">🌐</span>
+      <div class="t-info">
+        <h4>Netlify / Vercel</h4>
+        <p>Hosting web gratis</p>
+      </div>
+      <span class="free-badge">Free</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FASE 1 ===== -->
+<div class="section" style="padding-top: 20px;">
+  <div class="phase-block">
+    <div class="phase-header phase-1">
+      <div>
+        <div class="phase-num">Fase 1 · Hari 1–7</div>
+        <div class="phase-title">🧠 Pondasi — Pahami Dunia AI</div>
+        <div class="phase-range">Target: Kamu paham AI automation dan bisa pakai tools dasar</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">01</div></div>
+        <div class="day-content">
+          <h4>Orientasi: Apa itu AI & Automation?</h4>
+          <p>Tonton 3 video YouTube: "AI Automation untuk pemula Indonesia". Tulis 3 ide layanan yang bisa dijual. Daftar akun ChatGPT gratis.</p>
+          <div class="tools"><span class="tool-tag">ChatGPT</span><span class="tool-tag">YouTube</span></div>
+        </div>
+        <div><span class="day-type type-belajar">Belajar</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">02</div></div>
+        <div class="day-content">
+          <h4>Kuasai ChatGPT untuk Konten</h4>
+          <p>Latihan buat 10 caption Instagram menggunakan ChatGPT. Pelajari cara nulis "prompt" yang bagus. Simpan hasilnya di Google Docs.</p>
+          <div class="tools"><span class="tool-tag">ChatGPT</span><span class="tool-tag">Google Docs</span></div>
+        </div>
+        <div><span class="day-type type-praktek">Praktek</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">03</div></div>
+        <div class="day-content">
+          <h4>AI untuk Gambar & Desain</h4>
+          <p>Coba Canva AI Magic Generate. Buat 5 desain poster produk untuk toko fiktif. Bandingkan hasil manual vs AI — lihat selisih waktunya.</p>
+          <div class="tools"><span class="tool-tag">Canva AI</span><span class="tool-tag">Adobe Express</span></div>
+        </div>
+        <div><span class="day-type type-praktek">Praktek</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">04</div></div>
+        <div class="day-content">
+          <h4>Kenalan dengan Make.com (Automation Tool)</h4>
+          <p>Daftar Make.com gratis. Tonton tutorial dasar 1 jam. Buat automation pertama: "Jika ada email masuk → simpan ke Google Sheets".</p>
+          <div class="tools"><span class="tool-tag">Make.com</span><span class="tool-tag">Gmail</span><span class="tool-tag">Google Sheets</span></div>
+        </div>
+        <div><span class="day-type type-belajar">Belajar</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">05</div></div>
+        <div class="day-content">
+          <h4>Automation Konten Sosmed Otomatis</h4>
+          <p>Buat workflow: ChatGPT bikin caption → otomatis tersimpan di spreadsheet terjadwal. Ini adalah produk pertama yang bisa kamu jual!</p>
+          <div class="tools"><span class="tool-tag">Make.com</span><span class="tool-tag">ChatGPT API</span><span class="tool-tag">Google Sheets</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">06</div></div>
+        <div class="day-content">
+          <h4>Riset Pasar: Siapa yang Mau Bayar?</h4>
+          <p>Cari 10 UMKM di Instagram lokal Lombok/NTB. Lihat konten mereka — jelek? Jarang posting? Catat nama dan masalah mereka. Ini calon klien pertamamu.</p>
+          <div class="tools"><span class="tool-tag">Instagram</span><span class="tool-tag">Google Maps</span></div>
+        </div>
+        <div><span class="day-type type-belajar">Belajar</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">07</div></div>
+        <div class="day-content">
+          <h4>Review & Evaluasi Minggu 1</h4>
+          <p>Tulis apa yang sudah dipelajari. Pilih 1 layanan yang mau dijual minggu depan. Buat daftar pertanyaan yang masih belum kamu mengerti.</p>
+          <div class="tools"><span class="tool-tag">Notion</span></div>
+        </div>
+        <div><span class="day-type type-review">Review</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== FASE 2 ===== -->
+  <div class="phase-block">
+    <div class="phase-header phase-2">
+      <div>
+        <div class="phase-num">Fase 2 · Hari 8–16</div>
+        <div class="phase-title">🔨 Bangun Layanan Pertama</div>
+        <div class="phase-range">Target: Punya 1 produk/layanan yang siap dijual</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">08</div></div>
+        <div class="day-content">
+          <h4>Pilih 1 Niche Layanan AI</h4>
+          <p>Pilih salah satu: (A) Jasa konten sosmed otomatis, (B) Chatbot WA untuk toko, (C) Jasa desain dengan AI. Fokus pada SATU dulu — jangan banyak.</p>
+          <div class="tools"><span class="tool-tag">ChatGPT</span></div>
+        </div>
+        <div><span class="day-type type-belajar">Belajar</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">09</div></div>
+        <div class="day-content">
+          <h4>Buat Portofolio Contoh (Palsu tapi Nyata)</h4>
+          <p>Buat 3–5 contoh hasil kerja untuk toko fiktif. Contoh: "Paket konten 30 hari untuk Warung Makan Bu Sari". Screenshot dan simpan rapi.</p>
+          <div class="tools"><span class="tool-tag">Canva</span><span class="tool-tag">ChatGPT</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">10</div></div>
+        <div class="day-content">
+          <h4>Setup WhatsApp Business + Chatbot Dasar</h4>
+          <p>Install WA Business. Buat pesan sambutan otomatis dan FAQ otomatis (fitur bawaan gratis). Ini yang akan kamu jual ke toko-toko.</p>
+          <div class="tools"><span class="tool-tag">WA Business</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">11</div></div>
+        <div class="day-content">
+          <h4>Chatbot WA Tingkat Lanjut dengan Manychat</h4>
+          <p>Daftar Manychat gratis. Buat flow chatbot: pelanggan tanya harga → bot jawab otomatis → simpan data di spreadsheet. Demo ini ke calon klien.</p>
+          <div class="tools"><span class="tool-tag">Manychat</span><span class="tool-tag">WhatsApp</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">12</div></div>
+        <div class="day-content">
+          <h4>Buat Sistem Konten Bulanan Otomatis</h4>
+          <p>Bangun template: satu input "nama toko + produk" → ChatGPT generate 30 caption + hashtag → tersimpan otomatis. Ini produk senilai Rp 300rb–500rb/bulan.</p>
+          <div class="tools"><span class="tool-tag">Make.com</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Google Sheets</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">13</div></div>
+        <div class="day-content">
+          <h4>Buat Halaman Penawaran (Proposal)</h4>
+          <p>Buat dokumen proposal sederhana pakai Canva atau Google Docs. Isi: masalah klien, solusi kamu, harga, dan hasil yang dijanjikan. Simpan sebagai PDF.</p>
+          <div class="tools"><span class="tool-tag">Canva</span><span class="tool-tag">Google Docs</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">14</div></div>
+        <div class="day-content">
+          <h4>Penetapan Harga & Paket Layanan</h4>
+          <p>Buat 3 paket harga. Contoh: Starter Rp 150rb, Growth Rp 350rb, Pro Rp 700rb/bulan. Makin mahal = makin banyak otomasi. Harga rendah dulu untuk testimoni.</p>
+          <div class="tools"><span class="tool-tag">Google Docs</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">15</div></div>
+        <div class="day-content">
+          <h4>Buat Akun Freelance: Fastwork & Sribulancer</h4>
+          <p>Daftar Fastwork.id dan Sribulancer.com. Upload portofolio contoh dari hari ke-9. Tulis deskripsi layanan yang jelas. Ini saluran klien pertamamu.</p>
+          <div class="tools"><span class="tool-tag">Fastwork.id</span><span class="tool-tag">Sribulancer</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">16</div></div>
+        <div class="day-content">
+          <h4>Review Fase 2 + Persiapan Jualan</h4>
+          <p>Cek semua sistem yang sudah dibuat. Test ulang semuanya dari sudut pandang klien. Perbaiki yang masih error atau membingungkan.</p>
+          <div class="tools"><span class="tool-tag">Semua tools</span></div>
+        </div>
+        <div><span class="day-type type-review">Review</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== FASE 3 ===== -->
+  <div class="phase-block">
+    <div class="phase-header phase-3">
+      <div>
+        <div class="phase-num">Fase 3 · Hari 17–24</div>
+        <div class="phase-title">📣 Cari Klien Pertama & Dapat Uang</div>
+        <div class="phase-range">Target: 1–3 klien pertama, penghasilan pertama masuk</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">17</div></div>
+        <div class="day-content">
+          <h4>Hubungi 5 Kenalan yang Punya Usaha</h4>
+          <p>Chat via WA: "Bro/Sis, aku sekarang kerja di bidang otomasi konten pakai AI. Boleh aku tunjukkan demo gratis untuk usaha kamu?" — Gratis dulu, tujuannya testimoni.</p>
+          <div class="tools"><span class="tool-tag">WhatsApp</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">18</div></div>
+        <div class="day-content">
+          <h4>Demo Gratis → Konversi ke Berbayar</h4>
+          <p>Lakukan demo untuk kenalan yang tertarik. Tunjukkan hasilnya secara live (generate konten untuk toko mereka langsung). Di akhir, tawarkan paket berbayar.</p>
+          <div class="tools"><span class="tool-tag">ChatGPT</span><span class="tool-tag">Canva</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">19</div></div>
+        <div class="day-content">
+          <h4>Posting di Facebook Grup Lokal</h4>
+          <p>Cari grup Facebook "UMKM Lombok", "Wirausaha NTB", "Bisnis Online Mataram". Post: "Buka jasa konten sosmed otomatis pakai AI, harga mulai 150rb". Sertakan contoh hasil.</p>
+          <div class="tools"><span class="tool-tag">Facebook Groups</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">20</div></div>
+        <div class="day-content">
+          <h4>Aktif di Fastwork & Sribulancer</h4>
+          <p>Kirim penawaran (bid) ke 10 proyek yang relevan. Tulis pesan personal, bukan template. Kecepatan respons = kunci mendapat proyek di platform ini.</p>
+          <div class="tools"><span class="tool-tag">Fastwork.id</span><span class="tool-tag">Sribulancer</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">21</div></div>
+        <div class="day-content">
+          <h4>Kerjakan Proyek Pertama (Gratis/Berbayar)</h4>
+          <p>Jika dapat klien gratis: kerjakan maksimal, minta testimoni tertulis. Jika berbayar: kerjakan dan dokumentasikan prosesnya untuk portofolio.</p>
+          <div class="tools"><span class="tool-tag">Semua tools</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">22</div></div>
+        <div class="day-content">
+          <h4>Buat Konten Personal Brand di Instagram</h4>
+          <p>Buat akun Instagram khusus jasa AI-mu. Post 3 konten: (1) Apa itu jasa kamu, (2) Contoh hasil kerja, (3) Cara order. Gunakan ChatGPT untuk caption-nya.</p>
+          <div class="tools"><span class="tool-tag">Instagram</span><span class="tool-tag">Canva</span><span class="tool-tag">ChatGPT</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">23</div></div>
+        <div class="day-content">
+          <h4>Follow Up & Kumpulkan Testimoni</h4>
+          <p>Chat semua calon klien yang pernah dihubungi. Kirim update: "Hasil kerja klien aku sudah jadi nih, mau lihat?" Gunakan FOMO — tunjukkan hasilnya.</p>
+          <div class="tools"><span class="tool-tag">WhatsApp</span></div>
+        </div>
+        <div><span class="day-type type-launch">Launch</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">24</div></div>
+        <div class="day-content">
+          <h4>Evaluasi: Hitung Penghasilan & Hambatan</h4>
+          <p>Berapa yang sudah masuk? Apa yang berhasil? Apa yang tidak? Tulis jujur. Jika belum ada klien berbayar, analisis kenapa dan apa yang harus diubah.</p>
+          <div class="tools"><span class="tool-tag">Google Sheets</span></div>
+        </div>
+        <div><span class="day-type type-review">Review</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== FASE 4 ===== -->
+  <div class="phase-block">
+    <div class="phase-header phase-4">
+      <div>
+        <div class="phase-num">Fase 4 · Hari 25–30</div>
+        <div class="phase-title">📈 Skalakan & Sistemkan</div>
+        <div class="phase-range">Target: Sistem berjalan, siap dapat klien rutin setiap bulan</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">25</div></div>
+        <div class="day-content">
+          <h4>Otomatiskan Proses Onboarding Klien</h4>
+          <p>Buat Google Form untuk data klien baru → otomatis masuk ke spreadsheet → kamu dapat notifikasi WA. Klien baru = tinggal isi form, sistem jalan sendiri.</p>
+          <div class="tools"><span class="tool-tag">Google Forms</span><span class="tool-tag">Make.com</span><span class="tool-tag">WA</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">26</div></div>
+        <div class="day-content">
+          <h4>Buat Website Portofolio Sederhana</h4>
+          <p>Pakai Notion.site atau Carrd.co (gratis) untuk buat halaman portofolio. Tampilkan layanan, harga, testimoni, dan tombol hubungi via WA. Ini buat kredibilitas.</p>
+          <div class="tools"><span class="tool-tag">Notion.site</span><span class="tool-tag">Carrd.co</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">27</div></div>
+        <div class="day-content">
+          <h4>Ekspansi: Tambah Satu Layanan Baru</h4>
+          <p>Dari pengalaman klien pertama, tambah satu layanan komplementer. Contoh: sudah jual konten? Tambah "Paket Desain Thumbnail + Story otomatis". Upsell ke klien existing.</p>
+          <div class="tools"><span class="tool-tag">Canva AI</span><span class="tool-tag">ChatGPT</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">28</div></div>
+        <div class="day-content">
+          <h4>Buat Konten Marketing Rutin (Jadwal)</h4>
+          <p>Jadwalkan 3x seminggu posting di Instagram dan Facebook grup. Buat 12 konten sekaligus pakai AI → jadwalkan pakai Buffer gratis. Marketing autopilot.</p>
+          <div class="tools"><span class="tool-tag">ChatGPT</span><span class="tool-tag">Canva</span><span class="tool-tag">Buffer</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">29</div></div>
+        <div class="day-content">
+          <h4>Dokumentasi: Buat SOP Layananmu</h4>
+          <p>Tulis Standard Operating Procedure: dari klien masuk → dikerjakan → dikirim. Ini penting jika nanti kamu mau hire orang untuk bantu atau scale lebih besar.</p>
+          <div class="tools"><span class="tool-tag">Notion</span><span class="tool-tag">Google Docs</span></div>
+        </div>
+        <div><span class="day-type type-bangun">Bangun</span></div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-num-box"><div class="day-label">Hari</div><div class="day-num">30</div></div>
+        <div class="day-content">
+          <h4>🎉 Review Total & Rencana Bulan Ke-2</h4>
+          <p>Hitung total penghasilan 30 hari. Berapa klien? Berapa omzet? Apa yang sudah jalan? Buat target bulan depan. Kamu sudah punya fondasi — sekarang scale up!</p>
+          <div class="tools"><span class="tool-tag">Google Sheets</span><span class="tool-tag">Notion</span></div>
+        </div>
+        <div><span class="day-type type-review">Review</span></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- POTENSI PENGHASILAN -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-title">💰 Potensi Penghasilan Realistis</div>
+  <div class="section-sub">Estimasi jika kamu konsisten — bukan janji, tapi target nyata</div>
+
+  <div class="income-grid">
+    <div class="income-card">
+      <div class="emoji">🌱</div>
+      <h3>Bulan 1</h3>
+      <div class="range">Rp 300rb–1jt</div>
+      <p>1–3 klien pertama. Fokus testimoni dan portofolio.</p>
+    </div>
+    <div class="income-card">
+      <div class="emoji">📈</div>
+      <h3>Bulan 2–3</h3>
+      <div class="range">Rp 1jt–3jt</div>
+      <p>5–10 klien. Mulai ada yang perpanjang (recurring).</p>
+    </div>
+    <div class="income-card">
+      <div class="emoji">🚀</div>
+      <h3>Bulan 4–6</h3>
+      <div class="range">Rp 3jt–8jt</div>
+      <p>10–20 klien. Sistem sudah semi-otomatis.</p>
+    </div>
+    <div class="income-card">
+      <div class="emoji">🏆</div>
+      <h3>Bulan 6+</h3>
+      <div class="range">Rp 8jt–20jt+</div>
+      <p>Referral berjalan, brand dikenal, hire asisten.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TIPS SUKSES -->
+<div class="section" style="padding-top: 0;">
+  <div class="tips-box">
+    <h3>🧭 5 Prinsip Agar Tidak Menyerah di Tengah Jalan</h3>
+    <ul class="tips-list">
+      <li><span class="check">✓</span> <span><strong style="color:var(--white)">Fokus pada 1 layanan dulu.</strong> Banyak pemula gagal karena mau jual segalanya sekaligus. Kuasai satu, baru tambah.</span></li>
+      <li><span class="check">✓</span> <span><strong style="color:var(--white)">Mulai dari lingkaran terdekat.</strong> Klien pertama hampir selalu dari kenal-kenalan — teman, saudara, tetangga yang punya usaha. Jangan langsung ke orang asing.</span></li>
+      <li><span class="check">✓</span> <span><strong style="color:var(--white)">Gratis dulu untuk testimoni.</strong> 2–3 klien gratis dengan testimoni bagus nilainya lebih dari sejuta iklan. Gunakan ini sebagai bukti sosial.</span></li>
+      <li><span class="check">✓</span> <span><strong style="color:var(--white)">Konsisten 30 menit per hari cukup.</strong> Tidak perlu seharian penuh. 30 menit fokus setiap hari lebih baik dari kerja 8 jam seminggu sekali.</span></li>
+      <li><span class="check">✓</span> <span><strong style="color:var(--white)">Dokumentasikan setiap langkah.</strong> Screenshot hasil, simpan chat klien, catat penghasilan. Ini akan jadi portofolio dan motivasi di hari-hari sulit.</span></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  Dibuat khusus untuk kamu · Umur 25 tahun · Modal Rp 0 · Semangat 100% 🔥<br>
+  <span style="color:var(--accent)">AI Automation Roadmap 30 Hari</span>
+</footer>
+
+</body>
+</html>
